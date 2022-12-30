@@ -1,0 +1,113 @@
+body{
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h3{
+    color: var(--titulo);
+    margin-top: 15px;
+    opacity: 90%;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+.info .subtitulo{
+    margin-top: 5px;
+}
+
+.display{
+    height: 69vh;
+    width: 100vw;
+    margin-top: 30px;
+    /* background-color: red; */
+}
+.display .menssagem-recebida{
+    width: 90%;
+    height: 50px;
+    margin-left: 1px;
+    margin-bottom: 35px;
+    /* background-color: red; */
+}
+.display .menssagem-recebida .menssagem{
+    width: min-content;
+    height: min-content;
+    min-width: 300px;
+    min-height: 30px;
+    margin-left: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--menssagem-recebida);
+    color: var(--titulo);
+}
+.display .menssagem-recebida .data{
+    margin-left: 10px;
+    margin-top: 10px;
+    color: var(--sub-titulo);
+    font-size: 12px;
+}
+
+.display .menssagem-enviada{
+    width: 90%;
+    height: 50px;
+    margin-left: 1px;
+    margin-bottom: 35px;
+    float: right;
+    /* background-color: red; */
+}
+.display .menssagem-enviada .menssagem{
+    width: min-content;
+    height: min-content;
+    min-width: 300px;
+    min-height: 30px;
+    margin-right: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: end;
+    background-color: var(--menssagem-enviada);
+    color: var(--titulo);
+    float: right;
+}
+.display .menssagem-enviada .data{
+    margin-right: 10px;
+    margin-top: 10px;
+    color: var(--sub-titulo);
+    float: right;
+    font-size: 12px;
+}
+
+
+form{
+    width: 95vw;
+    height: 50px;
+    margin-top: 15px;
+    border: 3px solid var(--menssagem-recebida);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 1;
+}
+input{
+    width: 80%;
+    height: 44px;
+    background-color: var(--background);
+    border: none;
+    color: var(--titulo);
+    font-size: 16px;
+}
+button{
+    width: 50px;
+    height: 44px;
+    background-color: var(--background);
+    border: none;
+    color: var(--icone-enviar);
+}

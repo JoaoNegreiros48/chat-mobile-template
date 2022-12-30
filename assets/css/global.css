@@ -13,3 +13,16 @@
     --sub-titulo: #757a81;
     --icone-enviar: #23b983;
 }
+textarea:focus, input:focus, select:focus, button:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+
+.texto{
+    color: var(--texto);
+}
+.subtitulo{
+    color: var(--sub-titulo);
+    font-size: 12px;
+}
