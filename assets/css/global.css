@@ -4,3 +4,12 @@
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
 }
+:root{
+    --background: #17202c;
+    --menssagem-recebida: #585f67;
+    --menssagem-enviada: #348065;
+    --titulo: #f3f3f3;
+    --texto: #8b8f96;
+    --sub-titulo: #757a81;
+    --icone-enviar: #23b983;
+}
