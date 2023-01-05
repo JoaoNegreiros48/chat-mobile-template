@@ -26,17 +26,20 @@ h3 {
   margin-top: 30px;
   overflow-y: auto;
   position: sticky;
+  display: flex;
+  flex-direction: column;
 }
 .display .menssagem-recebida {
-  width: 90%;
+  /* width: 90%; */
   height: 50px;
   margin-left: 1px;
   margin-bottom: 35px;
+  max-width: 70vw;
 }
 .display .menssagem-recebida .menssagem {
   width: min-content;
   height: min-content;
-  min-width: 300px;
+  min-width: 55vw;
   min-height: 30px;
   margin-left: 10px;
   border-radius: 10px;
@@ -54,26 +57,30 @@ h3 {
 }
 
 .display .menssagem-enviada {
-  width: 90%;
+  /* width: 90%; */
   height: 50px;
   margin-left: auto;
   margin-bottom: 35px;
-  /* float: right; */
+  /* display: flex;
+  flex-direction: column; */
+  float: right;
 }
 .display .menssagem-enviada .menssagem {
-  width: min-content;
+  /* width: auto; */
   height: min-content;
-  min-width: 300px;
+  /* min-width: 10vw; */
   min-height: 30px;
   margin-right: 10px;
+  margin-left: auto;
   border-radius: 10px;
   display: flex;
   align-items: center;
   padding: 10px;
-  justify-content: end;
+  justify-content: center;
   background-color: var(--menssagem-enviada);
   color: var(--titulo);
-  float: right;
+  /* float: right; */
+  /* padding-right: 15px; */
 }
 .display .menssagem-enviada .data {
   margin-right: 10px;

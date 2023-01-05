@@ -5,7 +5,7 @@ $sql = mysqli_query($conexao, "select max(id) from chat;");
 while ($linha = $sql->fetch_array()) {
     $chatId = $linha['max(id)'];
 }
-$txt = "Olá";
+$txt = "Oláaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaa";
 $sql = mysqli_query($conexao, "insert into menssagens (chat, txt, horario, m_status) values ('$chatId', '$txt', curtime(), 1);");
 ?>
 
