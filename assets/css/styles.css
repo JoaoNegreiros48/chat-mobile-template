@@ -23,17 +23,16 @@ h3 {
 .display {
   height: 65vh;
   width: 95vw;
-  margin-top: 30px;
+  margin-top: 15px;
   overflow-y: auto;
   position: sticky;
   display: flex;
   flex-direction: column;
 }
 .display .menssagem-recebida {
-  /* width: 90%; */
-  height: 50px;
+  height: auto;
   margin-left: 1px;
-  margin-bottom: 35px;
+  margin-bottom: 15px;
   max-width: 70vw;
 }
 .display .menssagem-recebida .menssagem {
@@ -58,7 +57,7 @@ h3 {
 
 .display .menssagem-enviada {
   /* width: 90%; */
-  height: 50px;
+  height: auto;
   margin-left: auto;
   margin-bottom: 35px;
   /* display: flex;
@@ -119,11 +118,40 @@ button {
   border: none;
   color: var(--icone-enviar);
 }
-/* @media (max-width: 667px) {
-  #text:focus-within ~ #display{
+.estados{
+  width: 95vw;
+  height: auto;
+  /* margin-top: 100%; */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 1;
+  position: fixed;
+  bottom: 1px;
+}
+.estados .opcao{
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: white;
+  margin-bottom: 5px;
+  background-color: var(--icone-enviar);
+  cursor: pointer;
+}
+@media (max-width: 667px) {
+  /* .display .menssagem-recebida {
+    margin-bottom: 12vh;
+  } */
+  /* #text:focus-within ~ #display{
     height: min-content;
     position: fixed;
     bottom: 75px;
     background-color: red;
-  }
-} */
+  } */
+}
