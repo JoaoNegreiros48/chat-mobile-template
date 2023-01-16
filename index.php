@@ -98,16 +98,33 @@ $_SESSION['posicao_chat'] = 1;
         }
 
         function selecionaEstado(el) {
-            console.log(el.innerText)
             document.getElementById('text').style = 'display:flex'
             document.getElementById('txtChat').placeholder = 'Enviar menssagem'
             document.getElementById('txtChat').type = 'text'
             document.getElementById('estados').style = 'display:none'
             $.ajax({
-                url: 'assets/php/enviarMenssagem.php',
+                url: 'assets/php/bot.php',
                 method: 'POST',
                 data: {
                     texto: 'Certo seu estado é ' + el.innerText + ' agora me conta, qual sua cidade?',
+                    chatAtivo: chat,
+                    m_status: 1
+                }
+            }).done(function(result) {
+                document.getElementById('txtChat').value = ""
+            });
+            setTimeout(function() {
+                // console.log('menssagens')
+                document.getElementById('display').scrollTo(0, 1000);
+            }, 800);
+        }
+
+        function selecionaTipoPlano(el){
+            $.ajax({
+                url: 'assets/php/bot.php',
+                method: 'POST',
+                data: {
+                    texto: 'Você optou por buscar ' + el.innerText,
                     chatAtivo: chat,
                     m_status: 1
                 }
@@ -146,7 +163,7 @@ $_SESSION['posicao_chat'] = 1;
                 let txt = document.getElementById('txtChat').value
                 // let chat = document.getElementById('idChat').innerText
                 $.ajax({
-                    url: 'assets/php/enviarMenssagem.php',
+                    url: 'assets/php/bot.php',
                     method: 'POST',
                     data: {
                         texto: txt,
