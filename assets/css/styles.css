@@ -111,12 +111,29 @@ input {
   color: var(--titulo);
   font-size: 16px;
 }
+select {
+  width: 80%;
+  height: 44px;
+  background-color: var(--background);
+  border: none;
+  color: var(--titulo);
+  font-size: 16px;
+}
 button {
   width: 50px;
   height: 44px;
   background-color: var(--background);
   border: none;
   color: var(--icone-enviar);
+}
+a {
+  width: 50px;
+  height: 44px;
+  border: none;
+  color: var(--icone-enviar);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .estados{
   width: 95vw;
@@ -144,6 +161,50 @@ button {
   background-color: var(--icone-enviar);
   cursor: pointer;
 }
+
+.seguradoras{
+  width: 200px;
+  height: auto;
+  /* margin-top: 100%; */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  align-items: center;
+  justify-content: space-around;
+  z-index: 1;
+  /* position: fixed; */
+  bottom: 1px;
+}
+.seguradoras .opcao{
+  height: 100px;
+  width: 200px;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: white;
+  margin-bottom: 5px;
+  background-color: var(--icone-enviar);
+  cursor: pointer;
+}
+#selecionado{
+  position: absolute;
+  width: 150px;
+  height: 45px;
+  background-color: #d3d3d3;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  right:0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: none;
+  z-index: 1;
+} 
 @media (max-width: 667px) {
   /* .display .menssagem-recebida {
     margin-bottom: 12vh;

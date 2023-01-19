@@ -2,7 +2,7 @@
     $servidor = "localhost";
     $usuario = "root";
     $pass = "";
-    $bd = "chat";
+    $bd = "omnisegure";
 
     $conexao = new mysqli($servidor, $usuario, $pass, $bd);
 

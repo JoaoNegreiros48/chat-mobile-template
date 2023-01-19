@@ -1,10 +1,14 @@
 <?php
 include './assets/php/conecta.php';
 session_start();
-$sql = mysqli_query($conexao, "insert into chat (DMY) values (NOW());");
-$sql = mysqli_query($conexao, "select max(id) from chat;");
+$corretor = $_GET['id'];
+$data_atual = date('Y-m-d H:i:s');
+
+$sql = mysqli_query($conexao, "insert into chat (corretor, DMY, tag) values (1 , '$data_atual', 'Iniciado');");
+
+$sql = mysqli_query($conexao, "select * from chat where corretor = $corretor and DMY = '$data_atual';");
 while ($linha = $sql->fetch_array()) {
-    $chatId = $linha['max(id)'];
+    $chatId = $linha['id'];
 }
 $txt = "Olá meu nome é (Nome do corretor). <br><br> Estou aqui para te ajudar a encontrar o melhor seguro para você. <br><br> Para isso terei que fazer algumas perguntas";
 $sql = mysqli_query($conexao, "insert into menssagens (chat, txt, horario, m_status) values ('$chatId', '$txt', curtime(), 1);");
@@ -43,6 +47,9 @@ $_SESSION['posicao_chat'] = 1;
 </head>
 
 <body>
+    <div id="selecionado">
+        <p>SELECIONADO</p>
+    </div>
     <p id="idChat" style="display: none;"><?php echo $chatId ?></p>
     <form id="text">
         <input id="txtChat" type="text" placeholder="Enviar menssagem">
@@ -70,6 +77,11 @@ $_SESSION['posicao_chat'] = 1;
     </div>
 
     <script>
+        atualizar = 1;
+
+        function paraAtualizazao() {
+            atualizar = 0
+        }
         let chat = document.getElementById('idChat').innerText
         // Buscar estado do chat
 
@@ -92,9 +104,37 @@ $_SESSION['posicao_chat'] = 1;
             if (estado == 3) {
                 document.getElementById('text').style = 'display:none'
             }
+            if (estado == 4) {
+
+                document.getElementById('text').style = 'display:none'
+            }
             if (estado == 5) {
                 document.getElementById('text').style = 'display:none'
             }
+            if (estado == 6) {
+                document.getElementById('text').style = 'display:none'
+            }
+        }
+        setInterval(function() {
+            verificaEstado();
+        }, 800);
+
+        function selecionaTipoPlano(el) {
+            $.ajax({
+                url: 'assets/php/bot.php',
+                method: 'POST',
+                data: {
+                    texto: 'Você optou por buscar ' + el.innerText,
+                    chatAtivo: chat,
+                    m_status: 1
+                }
+            }).done(function(result) {
+                document.getElementById('txtChat').value = ""
+            });
+            setTimeout(function() {
+                // console.log('menssagens')
+                document.getElementById('display').scrollTo(0, 1000);
+            }, 800);
         }
 
         function selecionaEstado(el) {
@@ -119,26 +159,79 @@ $_SESSION['posicao_chat'] = 1;
             }, 800);
         }
 
-        function selecionaTipoPlano(el){
+        function loadCidade() {
+            let select = document.getElementById('cidades').value
             $.ajax({
                 url: 'assets/php/bot.php',
                 method: 'POST',
                 data: {
-                    texto: 'Você optou por buscar ' + el.innerText,
+                    texto: 'A cidade selecionada foi ' + select,
                     chatAtivo: chat,
                     m_status: 1
                 }
             }).done(function(result) {
-                document.getElementById('txtChat').value = ""
+                atualizar = 1;
+                document.getElementById('text').style = 'display:flex'
             });
+
             setTimeout(function() {
                 // console.log('menssagens')
                 document.getElementById('display').scrollTo(0, 1000);
             }, 800);
         }
-        setInterval(function() {
-            verificaEstado();
-        }, 800);
+
+        function selecionaSeguradora(el){
+            $.ajax({
+                url: 'assets/php/carregaValores.php',
+                method: 'POST',
+                data: {
+                    id: el,
+                }
+            }).done(function(result) {
+                atualizar = 1;
+                document.getElementById('text').style = 'display:flex'
+            });
+        }
+
+        function selecionaConvenio(el){
+            document.getElementById('selecionado').style = 'display:flex'
+            setTimeout(function() {
+                document.getElementById('selecionado').style = "display: none;"
+            }, 1000);
+
+            $.ajax({
+                url: 'assets/php/selecionaConvenio.php',
+                method: 'POST',
+                data: {
+                    selecionado: el.innerText,
+                }
+            }).done(function(result) {
+                console.log(result)
+            });
+        }
+
+        function finaliza(){
+            $.ajax({
+                url: 'assets/php/bot.php',
+                method: 'POST',
+                data: {
+                    texto: 'Sua simulação foi finalizada, logo entraremos em contato para finalizarmos seu atendimento',
+                    chatAtivo: chat,
+                    m_status: 1
+                }
+            }).done(function(result) {
+                
+            });
+            $.ajax({
+                url: 'assets/php/finaliza.php',
+                method: 'POST',
+                data: {
+                    senha: '',
+                }
+            }).done(function(result) {
+                
+            });
+        }
 
         // chat
 
@@ -155,7 +248,9 @@ $_SESSION['posicao_chat'] = 1;
             });
         }
         setInterval(function() {
-            carregarMenssagens();
+            if (atualizar == 1) {
+                carregarMenssagens();
+            }
         }, 800);
         $(document).ready(function() {
             $('#text').submit(function(e) {
