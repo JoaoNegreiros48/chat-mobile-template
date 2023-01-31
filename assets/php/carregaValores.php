@@ -18,7 +18,7 @@
     while ($linha = $sql->fetch_array()) {
         $convenio[$i] = ["id" => $linha['id'], "nome" => $linha['nome'], "seguradora" => $linha['seguradora']];
 
-        $textoConvenio = "Convênio da seguradora $nomeSeguradora, plano: ";
+        $textoConvenio = "Convênio da seguradora $nomeSeguradora - plano: ";
         // $executar = $conexao->query("insert into menssagens (chat, txt, horario, m_status) values ('$chat', '$texto', curtime(), 1);");
 
         $convenioAgora = $convenio[$i]['id'];

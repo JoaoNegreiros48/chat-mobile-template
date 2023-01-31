@@ -194,6 +194,7 @@ $_SESSION['posicao_chat'] = 1;
         }
 
         function selecionaConvenio(el){
+            let menssagem = el.children[0].innerHTML
             document.getElementById('selecionado').style = 'display:flex'
             setTimeout(function() {
                 document.getElementById('selecionado').style = "display: none;"
@@ -203,7 +204,7 @@ $_SESSION['posicao_chat'] = 1;
                 url: 'assets/php/selecionaConvenio.php',
                 method: 'POST',
                 data: {
-                    selecionado: el.innerText,
+                    selecionado: menssagem,
                 }
             }).done(function(result) {
                 console.log(result)
