@@ -30,7 +30,7 @@ while ($linha = $executar->fetch_array()) :
         </div>
         <?php }
         if ($_SESSION['posicao_chat'] == 3 && $linha['txt'] == "Qual tipo de plano você quer?") { ?>
-            <div class="estados" style="margin-bottom: 30px;" id="estados">
+            <div class="estados" id="estados">
                 <span class="opcao" style="width: auto; padding-left: 5px;padding-right: 5px;" onclick="selecionaTipoPlano(this)">Plano Individual</span>
                 <span class="opcao" style="width: auto; padding-left: 5px;padding-right: 5px;" onclick="selecionaTipoPlano(this)">Plano Familiar</span>
                 <span class="opcao" style="width: auto; padding-left: 5px;padding-right: 5px;" onclick="selecionaTipoPlano(this)">Plano Empresarial</span>
